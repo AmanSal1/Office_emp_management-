@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Employee Management System</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+                color: #333;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin-top: 20px;
+            }
+
+            h1 {
+                color: #4285f4;
+                margin-bottom: 20px;
+            }
+
+            .button-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 20px;
+                max-width: 400px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 15px;
+                text-align: center;
+                text-decoration: none;
+                color: #fff;
+                background-color: #4285f4;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+            .btn:hover {
+                background-color: #3367d6;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+        <h1>Employee Management System</h1>
+        <div class="button-container">
+            <a class="btn btn-primary" href="/all_empolyee" role="button">ALL EMPLOYEE</a>
+            <a class="btn btn-primary" href="/add_empolyee" role="button">ADD EMPLOYEE</a>
+            <a class="btn btn-primary" href="/del_emp" role="button">DELETE EMPLOYEE</a>
+            <a class="btn btn-primary" href="/filter_emp" role="button">FILTER EMPLOYEE</a>
+        </div>
+    </div>
+    </body>
+{% endblock %}
+</html>
