@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import Employee, Department, Role
+from .models import Employee, Department, Role,Attendance
 from datetime import datetime
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -13,14 +13,20 @@ def imp_objects(view_func):
         departments = Department.objects.values_list('name', flat=True).distinct()
         roles1 = Role.objects.values_list('name', flat=True).distinct()
         emps = Employee.objects.all()
+        attendance = Attendance.objects.all()
+
 
         context1 = {
             'departments': departments,
             'roles1': roles1,
-            'emps': emps
+            'emps': emps,
+            'attendance':attendance
+
         }
 
         response = view_func(request, context1, *args, **kwargs)
+        # for employee in emps:
+        #     Attendance.objects.create(employee=employee)
         return response
 
     return wrapper
@@ -46,7 +52,8 @@ def add_empolyee(request, context):
             bonus = int(request.POST['bonus'])
             phone = int(request.POST['phone'])
             dept = request.POST['dept']
-            department = get_object_or_404(Department, name=dept)
+            department = Department.objects.filter(name=dept).first()
+            print(str(department))
             dept_id = department.id
             role = request.POST['role']
             role = get_object_or_404(Role, name=role)
@@ -111,3 +118,20 @@ def filter_emp(request, context1):
         return render(request, 'filter_emp.html', context1)
     else:
         return HttpResponse('An Exception Occurred')
+
+@imp_objects
+def attendance(request,context1):
+    if request.method == 'POST':
+        try:
+            emp_name = request.POST.get('names')
+
+
+            return render(request, 'attendance.html', context1)
+        except:
+            HttpResponse("error occured")
+    else:
+        return  render(request, 'attendance.html', context1)
+
+
+
+

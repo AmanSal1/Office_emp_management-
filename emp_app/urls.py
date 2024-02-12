@@ -6,6 +6,7 @@ urlpatterns = [
     path('all_empolyee', views.allempolyee, name='allempolyee'),
     path('add_empolyee', views.add_empolyee, name='add_empolyee'),
     path('del_emp', views.del_emp, name='del_emp'),
-    path('filter_emp', views.filter_emp, name='filter_emp')
+    path('filter_emp', views.filter_emp, name='filter_emp'),
+    path('attendance',views.attendance,name = 'attendance')
 
 ]

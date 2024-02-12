@@ -46,7 +46,7 @@
         <select id="del" name="emp_id" class="form-control">
             {% for employee in emps %}
                 <option value="" disabled selected>Select Employee</option>
-                <option value="{{ employee.id }}">{{ employee.first_name }} {{ employee.last_name }}</option>
+                <option value="{{ employee.id }}">{{ employee.first_name }} {{ employee.last_name }} -   {{ employee.id }}</option>
             {% endfor %}
         </select>
 
